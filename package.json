@@ -1,0 +1,11 @@
+{
+  "name": "mathscraft-platform",
+  "version": "1.0.0",
+  "description": "Full stack app for Maths Craft MCIAB registration",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {}
+}
