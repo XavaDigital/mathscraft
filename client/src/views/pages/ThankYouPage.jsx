@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Card, CardHeader, CardMedia, CardContent, Grid } from "@mui/material";
+import { Card, CardHeader, CardContent, Grid } from "@mui/material";
 
-import headerImage from "assets/images/MathsCraftInBox_animated-1.gif";
+import ArgonButton from "components/ArgonButton";
 
 const ThankYouPage = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     console.log("scrolling");
     window.onbeforeunload = function () {
@@ -20,34 +23,39 @@ const ThankYouPage = () => {
     );
   }, []);
 
+  const redirectContact = () => {
+    navigate(`/contact`);
+  };
+
   return (
-    <Grid container justifyContent="center" sx={{ height: "100%" }} mt={6} mb={6} spacing={3}>
+    <Grid container justifyContent="center" spacing={3}>
       <Grid item xs={11} lg={4}>
         <Card
           sx={{
             overflowY: "visible",
-            boxShadow: ({ boxShadows: { md } }) => md,
             display: "grid",
           }}
         >
-          <img
-            src={headerImage}
-            alt="Maths Craft in a Box"
-            style={{ maxWidth: "100%", padding: "0 10px" }}
-          />
           <CardHeader
             title={"Thank you!"}
             titleTypographyProps={{ variant: "h2", fontWeight: "800" }}
             sx={{ textAlign: "center" }}
           />
           <CardContent sx={{ textAlign: "center" }}>
-            <p>Thank you for registering for a Maths Craft in a Box pack.</p>
+            <p>Thank you for ordering Maths Craft in a Box!</p>
             <p>
-              You will receive a registration confirmation email. If the email does not appear in
-              your invox within the next 5 minutes, please check your spam folder and add our email
-              to your contacts.
+              You will receive a confirmation email shortly. If this does not appear in your inbox
+              within the next 10 minutes, please check your spam folder and add us (
+              <a href="mailto:box@mathscraftnz.org">box@mathscraftnz.org</a>) to your contacts. If
+              you don&apos;t receive an email or if you have any questions, please{" "}
+              <a href="" onClick={redirectContact}>
+                contact us
+              </a>
+              .
             </p>
-            <p>We expect to be shipping these packs out within the next 2 weeks.</p>
+            <ArgonButton variant="gradient" color="dark" onClick={redirectContact}>
+              Contact Us
+            </ArgonButton>
           </CardContent>
         </Card>
       </Grid>

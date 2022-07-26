@@ -4,6 +4,7 @@
 import RegistrationPage from "views/pages/RegistrationPage";
 import ThankYouPage from "views/pages/ThankYouPage";
 import DownloadPage from "views/pages/DownloadPage";
+import ContactPage from "views/pages/ContactPage";
 
 const routes = [
   {
@@ -22,6 +23,12 @@ const routes = [
     key: "download",
     route: "/download",
     component: <DownloadPage />,
+    protected: "public",
+  },
+  {
+    key: "contact",
+    route: "/contact",
+    component: <ContactPage />,
     protected: "public",
   },
   // {

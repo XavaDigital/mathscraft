@@ -28,6 +28,7 @@ const RegistrationPage = () => {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     school: "",
     schoolName: "",
     addressCorrect: "true",
@@ -46,12 +47,18 @@ const RegistrationPage = () => {
 
   const { isSBActive, SBoptions, closeSB, openSB } = useSnackbar();
 
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
   const validationSchema = Yup.object({
     firstName: Yup.string("Enter a first name").required("Please enter a first name"),
     lastName: Yup.string("Enter a last name").required("Please enter a last name"),
     email: Yup.string("Enter an email")
       .email("Please enter a valid email")
       .required("Email is required"),
+    phone: Yup.string()
+      .required("Please enter a phone number")
+      .matches(phoneRegExp, "Phone number is not valid. It must contain only numbers and spaces"),
     school: Yup.string("Please indicate your school").required(
       "Please indicate the school you are affiliated with"
     ),
@@ -114,11 +121,11 @@ const RegistrationPage = () => {
     }, 3000);
   };
 
-  useEffect(() => {
-    if (Object.values(formik.errors).length > 0) {
-      setError("Some fields are invalid. Please check and try again");
-    } else setError("");
-  }, [formik.errors]);
+  // useEffect(() => {
+  //   if (Object.values(formik.errors).length > 0) {
+  //     setError("Some fields are invalid. Please check and try again");
+  //   } else setError("");
+  // }, [formik.errors]);
 
   const onSchoolChange = (val) => {
     const school = schools.find((school) => school.value === val);
@@ -142,48 +149,44 @@ const RegistrationPage = () => {
     formik.setFieldValue("school", val);
   };
 
-  useEffect(() => {
-    formik.validateForm();
-  }, [schoolSelected]);
+  // useEffect(() => {
+  //   formik.validateForm();
+  // }, [schoolSelected]);
+
+  const redirectContact = () => {
+    navigate(`/contact`);
+  };
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <SnackBar options={SBoptions} open={isSBActive} close={closeSB} />
 
-      <Grid
-        container
-        justifyContent="center"
-        sx={{ height: "100%" }}
-        mt={6}
-        mb={"400px"}
-        spacing={3}
-      >
+      <Grid container justifyContent="center" spacing={3}>
         <Grid item xs={10} sm={8} md={6} lg={6} xl={4}>
           <Card
             sx={{
               overflow: "visible",
-              boxShadow: ({ boxShadows: { md } }) => md,
               display: "grid",
             }}
           >
-            <img
+            {/* <img
               src={headerImage}
               alt="Maths Craft in a Box"
               style={{ maxWidth: "100%", padding: "0 10px" }}
-            />
+            /> */}
             <CardHeader
               title={"Register Now"}
               titleTypographyProps={{ variant: "h2", fontWeight: "800" }}
             />
             <CardContent>
-              <p>
-                Introduction blurb. Ut leo. Praesent congue erat at massa. Quisque id odio. Praesent
-                ac massa at ligula laoreet iaculis. Vestibulum rutrum, mi nec elementum vehicula,
-                eros quam gravida nisl, id fringilla neque ante vel mi. Ut leo. Praesent congue erat
-                at massa. Quisque id odio. Praesent ac massa at ligula laoreet iaculis. Vestibulum
-                rutrum, mi nec elementum vehicula, eros quam gravida nisl, id fringilla neque ante
-                vel mi.
-              </p>
+              <ArgonTypography variant="body">
+                Please register for a Box below. If you have any questions or problems completing
+                the form, please{" "}
+                <a href="" onClick={redirectContact}>
+                  contact us
+                </a>
+                .
+              </ArgonTypography>
               <FormSectionTitle variant="h4">Your Details</FormSectionTitle>
               <Grid container spacing={1}>
                 <Grid item xs={12} lg={6}>
@@ -211,7 +214,19 @@ const RegistrationPage = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} lg={12}>
+                <Grid item xs={12} lg={6}>
+                  <ArgonInput
+                    type="text"
+                    name="phone"
+                    label="Contact Number"
+                    placeholder="Your Phone Number"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    error={formik.touched.phone && Boolean(formik.errors.phone)}
+                    helperText={formik.touched.phone && formik.errors.phone}
+                  />
+                </Grid>
+                <Grid item xs={12} lg={6}>
                   <ArgonInput
                     type="email"
                     name="email"
@@ -229,7 +244,9 @@ const RegistrationPage = () => {
               <Grid item>
                 <ArgonSelect
                   label="School Name"
-                  description="Please start typing your school's name and select your school from the drop down list. If your school is not listed, please choose 'Other'."
+                  description={
+                    "Please start typing your school's name and select your school from the dropdown list. Please contact usif you can't find your school or if the postal address listed is incorrect."
+                  }
                   placeholder="School Name"
                   options={schools}
                   name="school"
@@ -244,7 +261,7 @@ const RegistrationPage = () => {
                 <>
                   {schoolSelected.value !== "0" && (
                     <>
-                      <FormSectionTitle variant="h4">Confirm Address</FormSectionTitle>
+                      <FormSectionTitle variant="h4">Confirm Postal Address</FormSectionTitle>
                       <Grid item>
                         <p style={{ marginBottom: "0" }}>
                           <b>{schoolSelected.label}</b>
@@ -276,7 +293,15 @@ const RegistrationPage = () => {
 
                   {formik.values.addressCorrect === "false" && (
                     <>
-                      <FormSectionTitle variant="h4">Delivery Details</FormSectionTitle>
+                      <Alert severity="warning">
+                        Please{" "}
+                        <a href="" onClick={redirectContact}>
+                          contact us
+                        </a>{" "}
+                        if the postal address listed is incorrect or leave a comment in the box
+                        below.
+                      </Alert>
+                      {/* <FormSectionTitle variant="h4">Delivery Details</FormSectionTitle>
                       <Grid container spacing={1}>
                         {schoolSelected.value === "0" && (
                           <Grid item xs={12} lg={12}>
@@ -341,7 +366,7 @@ const RegistrationPage = () => {
                             helperText={formik.touched.postcode && formik.errors.postcode}
                           />
                         </Grid>
-                      </Grid>
+                      </Grid> */}
                     </>
                   )}
 
@@ -368,7 +393,7 @@ const RegistrationPage = () => {
                   )}
                   {!inProgress ? (
                     <ArgonBox mt={4}>
-                      <ArgonButton variant="gradient" color="dark" type="submit" fullWidth>
+                      <ArgonButton type="submit" fullWidth>
                         Submit
                       </ArgonButton>
                     </ArgonBox>
@@ -383,6 +408,14 @@ const RegistrationPage = () => {
                     </>
                   )}
                 </>
+              )}
+              {!inProgress && (
+                <ArgonBox mt={3} mb={3} textAlign="center">
+                  <ArgonTypography variant="body2">
+                    Having trouble? Please contact us.
+                  </ArgonTypography>
+                  <ArgonButton onClick={redirectContact}>Contact Us</ArgonButton>
+                </ArgonBox>
               )}
             </CardContent>
           </Card>

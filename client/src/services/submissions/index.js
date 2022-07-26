@@ -55,3 +55,14 @@ export const downloadSubmissions = () => {
       console.log(err);
     });
 };
+
+export const sendMessage = (values) => {
+  return instance
+    .post(`submissions/message`, { values })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
