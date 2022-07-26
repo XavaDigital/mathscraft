@@ -4,7 +4,7 @@
   "description": "Full stack app for Maths Craft MCIAB registration",
   "scripts": {
     "client": "npm start --prefix client",
-    "server": "npm start --prefix server",
+    "server": "npm run dev --prefix server",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {}

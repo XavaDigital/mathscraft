@@ -10,12 +10,11 @@ const DownloadPage = () => {
   }, []);
 
   return (
-    <Grid container justifyContent="center" sx={{ height: "100%" }} mt={6} mb={6} spacing={3}>
+    <Grid container justifyContent="center" spacing={3}>
       <Grid item xs={11} lg={4}>
         <Card
           sx={{
             overflowY: "visible",
-            boxShadow: ({ boxShadows: { md } }) => md,
             display: "grid",
           }}
         >

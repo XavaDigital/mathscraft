@@ -13,6 +13,7 @@ const FormSectionTitle = ({ children }) => {
         marginBottom: "15px",
       }}
       variant="h4"
+      className="section-title"
     >
       {children}
     </ArgonTypography>

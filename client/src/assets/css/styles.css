@@ -4,3 +4,173 @@ body,
   height: 100%;
   min-height: 100%;
 } */
+
+body {
+  background-color: #ffffff !important;
+}
+
+@font-face {
+  font-family: futura-pt;
+  src: url(https://use.typekit.net/af/9b05f3/000000000000000000013365/27/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/9b05f3/000000000000000000013365/27/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/9b05f3/000000000000000000013365/27/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: futura-pt;
+  src: url(https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/l?subset_id=2&fvd=n5&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/d?subset_id=2&fvd=n5&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/2cd6bf/00000000000000000001008f/27/a?subset_id=2&fvd=n5&v=3)
+      format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: futura-pt;
+  src: url(https://use.typekit.net/af/309dfe/000000000000000000010091/27/l?subset_id=2&fvd=n7&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/309dfe/000000000000000000010091/27/d?subset_id=2&fvd=n7&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/309dfe/000000000000000000010091/27/a?subset_id=2&fvd=n7&v=3)
+      format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: futura-pt;
+  src: url(https://use.typekit.net/af/cf3e4e/000000000000000000010095/27/l?subset_id=2&fvd=i4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/cf3e4e/000000000000000000010095/27/d?subset_id=2&fvd=i4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/cf3e4e/000000000000000000010095/27/a?subset_id=2&fvd=i4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: futura-pt;
+  src: url(https://use.typekit.net/af/1eb35a/000000000000000000010090/27/l?subset_id=2&fvd=i5&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/1eb35a/000000000000000000010090/27/d?subset_id=2&fvd=i5&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/1eb35a/000000000000000000010090/27/a?subset_id=2&fvd=i5&v=3)
+      format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: futura-pt;
+  src: url(https://use.typekit.net/af/eb729a/000000000000000000010092/27/l?subset_id=2&fvd=i7&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/eb729a/000000000000000000010092/27/d?subset_id=2&fvd=i7&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/eb729a/000000000000000000010092/27/a?subset_id=2&fvd=i7&v=3)
+      format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+  font-display: auto;
+}
+
+.MuiCard-root {
+  box-shadow: initial !important;
+}
+
+.MuiCard-root .MuiTypography-body,
+.MuiCard-root .MuiTypography-body2 {
+  font-family: "futura-pt", sans-serif;
+  color: #7d7d7d;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.7em;
+}
+.MuiCard-root .MuiTypography-root a {
+  color: #000000;
+  text-decoration-line: underline !important;
+  text-decoration-color: #7d7d7d !important;
+}
+.MuiCard-root .MuiCardHeader-content .MuiCardHeader-title {
+  font-family: "futura-pt", sans-serif;
+  color: #212121;
+  font-size: 50px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1em;
+}
+.MuiCard-root .MuiTypography-root.section-title {
+  font-family: "futura-pt", sans-serif;
+  color: #545454;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.3em;
+}
+.MuiCard-root label.field-label {
+  font-family: "futura-pt", sans-serif;
+  color: #212121e0;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.3em;
+}
+.MuiCard-root ::placeholder,
+.MuiCard-root #react-select-2-placeholder {
+  font-family: "futura-pt", sans-serif;
+  color: #908e8e;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.3em;
+}
+.MuiCard-root #react-select-2-listbox {
+  font-family: "futura-pt", sans-serif;
+  color: #908e8e;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.3em;
+}
+.MuiCard-root .MuiTypography-caption {
+  font-family: "futura-pt", sans-serif;
+  color: #7d7d7d;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.2em;
+}
+.MuiCard-root .MuiButtonBase-root,
+.MuiCard-root .MuiButtonBase-root:not(:hover),
+.MuiCard-root .MuiButtonBase-root:focus:not(:hover) {
+  font-family: "futura-pt", sans-serif;
+  background-color: #545454;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.2em;
+  border-radius: 3px;
+  opacity: 1;
+}
+.MuiCard-root .MuiButtonBase-root:hover {
+  opacity: 0.8;
+  background-color: #545454;
+  color: #ffffff;
+}

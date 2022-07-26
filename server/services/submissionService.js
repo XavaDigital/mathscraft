@@ -2,7 +2,6 @@ const Submission = require("../models/submission");
 const { Parser } = require("json2csv");
 
 const emailService = require("./emailService");
-// const utils = require("../utils/generalUtils");
 
 module.exports.getAll = (req, res) => {
   Submission.find({})
@@ -26,62 +25,24 @@ module.exports.getAll = (req, res) => {
     });
 };
 
-// module.exports.get = (id, res) => {
-//   Group.findOne({ _id: id })
-//     .then((group) => {
-//       if (group.length == 0) {
-//         res.json({
-//           success: false,
-//           msg: "Group not found",
-//         });
-//       }
-//       res.json({
-//         success: true,
-//         group,
-//       });
-//     })
-//     .catch((err) => {
-//       res.json({
-//         success: false,
-//         msg: err.message,
-//       });
-//     });
-// };
-
 module.exports.add = (values, res) => {
-  Submission.findOne({ school: values.school })
-    .then((sub) => {
-      if (sub && values.school !== "0") {
-        res.json({
-          success: false,
-          msg: `School has already been registered by ${sub.firstName} ${sub.lastName}`,
-        });
-      } else {
-        Submission.create(values)
-          .then((submission) => {
-            emailService
-              .submissionAdded(values.email, values.firstName)
-              .then(() => {
-                res.json({
-                  success: true,
-                  id: submission._id,
-                  msg: "Successfully added submission",
-                });
-              })
-              .catch((err) => {
-                res.json({ success: false, msg: err.message });
-              });
-          })
-          .catch((err) => {
-            res.json({ success: false, msg: err.message });
+  Submission.create(values)
+    .then((submission) => {
+      emailService
+        .submissionAdded(values)
+        .then(() => {
+          res.json({
+            success: true,
+            id: submission._id,
+            msg: "Successfully added submission",
           });
-      }
+        })
+        .catch((err) => {
+          res.json({ success: false, msg: err.message });
+        });
     })
     .catch((err) => {
-      res.json({
-        success: false,
-        msg: err.message,
-      });
+      res.json({ success: false, msg: err.message });
     });
 };
 
@@ -90,6 +51,7 @@ module.exports.download = (res) => {
     "firstName",
     "lastName",
     "email",
+    "phone",
     "schoolName",
     "address1",
     "address2",
@@ -132,37 +94,16 @@ module.exports.download = (res) => {
     });
 };
 
-// module.exports.update = (id, values, res) => {
-//   delete values["_id"];
-//   delete values["date_created"];
-
-//   Group.findOneAndUpdate({ _id: id }, values)
-//     .then((group) => {
-//       res.json({
-//         success: true,
-//         msg: "Successfully updated group",
-//       });
-//     })
-//     .catch((err) => {
-//       res.json({
-//         success: false,
-//         msg: err.message,
-//       });
-//     });
-// };
-
-// module.exports.delete = (id, res) => {
-//   Group.findOneAndDelete({ _id: id })
-//     .then((group) => {
-//       res.json({
-//         success: true,
-//         msg: "Successfully deleted group",
-//       });
-//     })
-//     .catch((err) => {
-//       res.json({
-//         success: false,
-//         msg: err.message,
-//       });
-//     });
-// };
+module.exports.message = (values, res) => {
+  emailService
+    .sendEnquiryMessage(values)
+    .then(() => {
+      res.json({
+        success: true,
+        msg: "Successfully added message",
+      });
+    })
+    .catch((err) => {
+      res.json({ success: false, msg: err.message });
+    });
+};
