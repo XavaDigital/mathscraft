@@ -181,11 +181,7 @@ const RegistrationPage = () => {
             <CardContent>
               <ArgonTypography variant="body">
                 Please register for a Box below. If you have any questions or problems completing
-                the form, please{" "}
-                <a href="" onClick={redirectContact}>
-                  contact us
-                </a>
-                .
+                the form, please <a onClick={redirectContact}>contact us</a>.
               </ArgonTypography>
               <FormSectionTitle variant="h4">Your Details</FormSectionTitle>
               <Grid container spacing={1}>
@@ -245,7 +241,11 @@ const RegistrationPage = () => {
                 <ArgonSelect
                   label="School Name"
                   description={
-                    "Please start typing your school's name and select your school from the dropdown list. Please contact usif you can't find your school or if the postal address listed is incorrect."
+                    <div>
+                      Please start typing your school&apos;s name and select your school from the
+                      dropdown list. Please <a onClick={redirectContact}>contact us</a> if you
+                      can&apos;t find your school or if the postal address listed is incorrect.
+                    </div>
                   }
                   placeholder="School Name"
                   options={schools}
@@ -263,13 +263,15 @@ const RegistrationPage = () => {
                     <>
                       <FormSectionTitle variant="h4">Confirm Postal Address</FormSectionTitle>
                       <Grid item>
-                        <p style={{ marginBottom: "0" }}>
-                          <b>{schoolSelected.label}</b>
-                        </p>
-                        <p style={{ marginBottom: "0" }}>{schoolSelected.address1}</p>
-                        <p style={{ marginBottom: "0" }}>{schoolSelected.address2}</p>
-                        <p style={{ marginBottom: "0" }}>{schoolSelected.townCity}</p>
-                        <p style={{ marginBottom: "0" }}>{schoolSelected.postcode}</p>
+                        <div className="address">
+                          <p style={{ marginBottom: "0" }}>
+                            <b>{schoolSelected.label}</b>
+                          </p>
+                          <p style={{ marginBottom: "0" }}>{schoolSelected.address1}</p>
+                          <p style={{ marginBottom: "0" }}>{schoolSelected.address2}</p>
+                          <p style={{ marginBottom: "0" }}>{schoolSelected.townCity}</p>
+                          <p style={{ marginBottom: "0" }}>{schoolSelected.postcode}</p>
+                        </div>
                       </Grid>
                       <Grid item>
                         <ArgonRadio
@@ -294,12 +296,8 @@ const RegistrationPage = () => {
                   {formik.values.addressCorrect === "false" && (
                     <>
                       <Alert severity="warning">
-                        Please{" "}
-                        <a href="" onClick={redirectContact}>
-                          contact us
-                        </a>{" "}
-                        if the postal address listed is incorrect or leave a comment in the box
-                        below.
+                        Please <a onClick={redirectContact}>contact us</a> if the postal address
+                        listed is incorrect or leave a comment in the box below.
                       </Alert>
                       {/* <FormSectionTitle variant="h4">Delivery Details</FormSectionTitle>
                       <Grid container spacing={1}>
@@ -375,8 +373,8 @@ const RegistrationPage = () => {
                     <ArgonInput
                       type="text"
                       name="comments"
-                      label="Other Comments"
-                      placeholder="Any other comments you'd like to add"
+                      label="Comments"
+                      placeholder="Any comments you'd like to add"
                       value={formik.values.comments}
                       onChange={formik.handleChange}
                       error={formik.touched.comments && Boolean(formik.errors.comments)}
@@ -411,9 +409,6 @@ const RegistrationPage = () => {
               )}
               {!inProgress && (
                 <ArgonBox mt={3} mb={3} textAlign="center">
-                  <ArgonTypography variant="body2">
-                    Having trouble? Please contact us.
-                  </ArgonTypography>
                   <ArgonButton onClick={redirectContact}>Contact Us</ArgonButton>
                 </ArgonBox>
               )}

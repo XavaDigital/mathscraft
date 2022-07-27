@@ -99,12 +99,13 @@ body {
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0em;
-  line-height: 1.7em;
+  line-height: 1.2em;
 }
 .MuiCard-root .MuiTypography-root a {
   color: #000000;
   text-decoration-line: underline !important;
   text-decoration-color: #7d7d7d !important;
+  cursor: pointer;
 }
 .MuiCard-root .MuiCardHeader-content .MuiCardHeader-title {
   font-family: "futura-pt", sans-serif;
@@ -173,4 +174,14 @@ body {
   opacity: 0.8;
   background-color: #545454;
   color: #ffffff;
+}
+div.address {
+  color: #67748e;
+}
+.MuiRadio-root .MuiFormControlLabel-label {
+  color: #212121e0;
+}
+.MuiAlert-message a {
+  text-decoration: underline !important;
+  cursor: pointer;
 }
