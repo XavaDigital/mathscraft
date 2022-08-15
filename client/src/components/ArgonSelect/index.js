@@ -77,7 +77,7 @@ ArgonSelect.defaultProps = {
 ArgonSelect.propTypes = {
   size: PropTypes.oneOf(["small", "medium", "large"]),
   label: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.node,
   error: PropTypes.bool,
   success: PropTypes.bool,
   disabled: PropTypes.bool,

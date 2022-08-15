@@ -5,6 +5,8 @@ const instance = axios.create({
   baseURL: config.WS_BASE_URL,
 });
 
+const sheets = axios.create({});
+
 instance.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token");
   config.headers.Authorization = token ? token : "";

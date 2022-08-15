@@ -28,6 +28,7 @@ const RegistrationPage = () => {
 
   const [error, setError] = useState("");
   const [inProgress, setInProgress] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const navigate = useNavigate();
 
@@ -63,6 +64,9 @@ const RegistrationPage = () => {
             content: "Your message has been successfully submitted",
             color: "success",
           });
+          setTimeout(() => {
+            setSubmitted(true);
+          }, 3000);
         } else {
           setError(data.msg);
           openSB({
@@ -73,9 +77,6 @@ const RegistrationPage = () => {
           });
         }
         setInProgress(false);
-        setTimeout(() => {
-          navigate(`/`);
-        }, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -100,79 +101,90 @@ const RegistrationPage = () => {
               titleTypographyProps={{ variant: "h2", fontWeight: "800" }}
             />
             <CardContent>
-              <Grid container spacing={1}>
-                <Grid item xs={12} lg={6}>
-                  <ArgonInput
-                    type="text"
-                    name="name"
-                    label="Your Name"
-                    placeholder="Your Name"
-                    value={formik.values.name}
-                    onChange={formik.handleChange}
-                    error={formik.touched.name && Boolean(formik.errors.name)}
-                    helperText={formik.touched.name && formik.errors.name}
-                  />
-                </Grid>
-                <Grid item xs={12} lg={6}>
-                  <ArgonInput
-                    type="email"
-                    name="email"
-                    label="Email"
-                    placeholder="Your School Email Address"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
-                  />
-                </Grid>
-                <Grid item xs={12} lg={12}>
-                  <ArgonInput
-                    type="text"
-                    name="subject"
-                    label="Message Subject"
-                    placeholder="Message Subject"
-                    value={formik.values.subject}
-                    onChange={formik.handleChange}
-                    error={formik.touched.subject && Boolean(formik.errors.subject)}
-                    helperText={formik.touched.subject && formik.errors.subject}
-                  />
-                </Grid>
-                <Grid item xs={12} lg={12}>
-                  <ArgonInput
-                    type="text"
-                    name="message"
-                    label="Your Message"
-                    placeholder="Your message"
-                    value={formik.values.message}
-                    onChange={formik.handleChange}
-                    error={formik.touched.message && Boolean(formik.errors.message)}
-                    helperText={formik.touched.message && formik.errors.message}
-                    multiline
-                    rows={5}
-                  />
-                </Grid>
-              </Grid>
-              <>
-                {error && (
-                  <ArgonBox mt={4}>
-                    <Alert severity="error">{error}</Alert>
-                  </ArgonBox>
-                )}
-                {!inProgress ? (
-                  <ArgonBox mt={4}>
-                    <ArgonButton type="submit">Submit</ArgonButton>
-                  </ArgonBox>
-                ) : (
+              {!submitted ? (
+                <>
+                  <ArgonTypography variant="body">
+                    Fill in the form below or <a href="mailto:box@mathscraftnz.org">email us</a>.
+                  </ArgonTypography>
+                  <Grid container spacing={1}>
+                    <Grid item xs={12} lg={6}>
+                      <ArgonInput
+                        type="text"
+                        name="name"
+                        label="Your Name"
+                        placeholder="Your Name"
+                        value={formik.values.name}
+                        onChange={formik.handleChange}
+                        error={formik.touched.name && Boolean(formik.errors.name)}
+                        helperText={formik.touched.name && formik.errors.name}
+                      />
+                    </Grid>
+                    <Grid item xs={12} lg={6}>
+                      <ArgonInput
+                        type="email"
+                        name="email"
+                        label="Email"
+                        placeholder="Your Email Address"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        error={formik.touched.email && Boolean(formik.errors.email)}
+                        helperText={formik.touched.email && formik.errors.email}
+                      />
+                    </Grid>
+                    <Grid item xs={12} lg={12}>
+                      <ArgonInput
+                        type="text"
+                        name="subject"
+                        label="Message Subject"
+                        placeholder="Message Subject"
+                        value={formik.values.subject}
+                        onChange={formik.handleChange}
+                        error={formik.touched.subject && Boolean(formik.errors.subject)}
+                        helperText={formik.touched.subject && formik.errors.subject}
+                      />
+                    </Grid>
+                    <Grid item xs={12} lg={12}>
+                      <ArgonInput
+                        type="text"
+                        name="message"
+                        label="Your Message"
+                        placeholder="Your message"
+                        value={formik.values.message}
+                        onChange={formik.handleChange}
+                        error={formik.touched.message && Boolean(formik.errors.message)}
+                        helperText={formik.touched.message && formik.errors.message}
+                        multiline
+                        rows={5}
+                      />
+                    </Grid>
+                  </Grid>
                   <>
-                    <ArgonBox mt={4} textAlign="center">
-                      <CircularProgress color="success" />{" "}
-                      <ArgonTypography variant="body2" pb="3" color="text">
-                        Submitting... Please wait
-                      </ArgonTypography>
-                    </ArgonBox>
+                    {error && (
+                      <ArgonBox mt={4}>
+                        <Alert severity="error">{error}</Alert>
+                      </ArgonBox>
+                    )}
+                    {!inProgress ? (
+                      <ArgonBox mt={4}>
+                        <ArgonButton type="submit">Submit</ArgonButton>
+                      </ArgonBox>
+                    ) : (
+                      <>
+                        <ArgonBox mt={4} textAlign="center">
+                          <CircularProgress color="success" />{" "}
+                          <ArgonTypography variant="body2" pb="3" color="text">
+                            Submitting... Please wait
+                          </ArgonTypography>
+                        </ArgonBox>
+                      </>
+                    )}
                   </>
-                )}
-              </>
+                </>
+              ) : (
+                <ArgonTypography variant="body">
+                  Thank you for contacting us. We’ll be in touch as soon as possible.
+                </ArgonTypography>
+              )}
             </CardContent>
           </Card>
         </Grid>

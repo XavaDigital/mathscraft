@@ -10,6 +10,123 @@ body {
 }
 
 @font-face {
+  font-family: proxima-nova;
+  src: url(https://use.typekit.net/af/154cda/00000000000000007735e601/30/l?subset_id=2&fvd=n1&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/154cda/00000000000000007735e601/30/d?subset_id=2&fvd=n1&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/154cda/00000000000000007735e601/30/a?subset_id=2&fvd=n1&v=3)
+      format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: proxima-nova;
+  src: url(https://use.typekit.net/af/1be3c2/00000000000000007735e606/30/l?subset_id=2&fvd=n3&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/1be3c2/00000000000000007735e606/30/d?subset_id=2&fvd=n3&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/1be3c2/00000000000000007735e606/30/a?subset_id=2&fvd=n3&v=3)
+      format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: proxima-nova;
+  src: url(https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: adobe-garamond-pro;
+  src: url(https://use.typekit.net/af/2011b6/00000000000000003b9b00c1/27/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/2011b6/00000000000000003b9b00c1/27/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/2011b6/00000000000000003b9b00c1/27/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: adobe-garamond-pro;
+  src: url(https://use.typekit.net/af/af619f/00000000000000003b9b00c5/27/l?subset_id=2&fvd=n7&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/af619f/00000000000000003b9b00c5/27/d?subset_id=2&fvd=n7&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/af619f/00000000000000003b9b00c5/27/a?subset_id=2&fvd=n7&v=3)
+      format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: adobe-garamond-pro;
+  src: url(https://use.typekit.net/af/d68363/00000000000000003b9b00c4/27/l?subset_id=2&fvd=i6&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/d68363/00000000000000003b9b00c4/27/d?subset_id=2&fvd=i6&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/d68363/00000000000000003b9b00c4/27/a?subset_id=2&fvd=i6&v=3)
+      format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: minion-pro;
+  src: url(https://use.typekit.net/af/1286c7/0000000000000000000151d6/27/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/1286c7/0000000000000000000151d6/27/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/1286c7/0000000000000000000151d6/27/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: proxima-nova-condensed;
+  src: url(https://use.typekit.net/af/7a7bec/00000000000000007735e61c/30/l?subset_id=2&fvd=n5&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/7a7bec/00000000000000007735e61c/30/d?subset_id=2&fvd=n5&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/7a7bec/00000000000000007735e61c/30/a?subset_id=2&fvd=n5&v=3)
+      format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: proxima-nova-condensed;
+  src: url(https://use.typekit.net/af/3f0c14/00000000000000007735e626/30/l?subset_id=2&fvd=n6&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/3f0c14/00000000000000007735e626/30/d?subset_id=2&fvd=n6&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/3f0c14/00000000000000007735e626/30/a?subset_id=2&fvd=n6&v=3)
+      format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
   font-family: futura-pt;
   src: url(https://use.typekit.net/af/9b05f3/000000000000000000013365/27/l?subset_id=2&fvd=n4&v=3)
       format("woff2"),
@@ -87,6 +204,58 @@ body {
   font-stretch: normal;
   font-display: auto;
 }
+@font-face {
+  font-family: brandon-grotesque;
+  src: url(https://use.typekit.net/af/1da05b/0000000000000000000132df/27/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/1da05b/0000000000000000000132df/27/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/1da05b/0000000000000000000132df/27/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: fatfrank;
+  src: url(https://use.typekit.net/af/2aa411/00000000000000007735a612/30/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/2aa411/00000000000000007735a612/30/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/2aa411/00000000000000007735a612/30/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: ltc-bodoni-175;
+  src: url(https://use.typekit.net/af/04715e/000000000000000077359a54/30/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/04715e/000000000000000077359a54/30/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/04715e/000000000000000077359a54/30/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
+@font-face {
+  font-family: din-condensed-web;
+  src: url(https://use.typekit.net/af/cfbead/0000000000000000000146b3/27/l?subset_id=2&fvd=n4&v=3)
+      format("woff2"),
+    url(https://use.typekit.net/af/cfbead/0000000000000000000146b3/27/d?subset_id=2&fvd=n4&v=3)
+      format("woff"),
+    url(https://use.typekit.net/af/cfbead/0000000000000000000146b3/27/a?subset_id=2&fvd=n4&v=3)
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: auto;
+}
 
 .MuiCard-root {
   box-shadow: initial !important;
@@ -95,21 +264,21 @@ body {
 .MuiCard-root .MuiTypography-body,
 .MuiCard-root .MuiTypography-body2 {
   font-family: "futura-pt", sans-serif;
-  color: #7d7d7d;
-  font-size: 18px;
+  color: #262626;
+  font-size: 20px;
   font-weight: 400;
   letter-spacing: 0em;
   line-height: 1.2em;
 }
 .MuiCard-root .MuiTypography-root a {
-  color: #000000;
+  color: #262626;
   text-decoration-line: underline !important;
-  text-decoration-color: #7d7d7d !important;
+  text-decoration-color: #262626 !important;
   cursor: pointer;
 }
 .MuiCard-root .MuiCardHeader-content .MuiCardHeader-title {
   font-family: "futura-pt", sans-serif;
-  color: #212121;
+  color: #262626;
   font-size: 50px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -117,16 +286,16 @@ body {
 }
 .MuiCard-root .MuiTypography-root.section-title {
   font-family: "futura-pt", sans-serif;
-  color: #545454;
-  font-size: 28px;
+  color: #262626;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: 0em;
   line-height: 1.3em;
 }
 .MuiCard-root label.field-label {
   font-family: "futura-pt", sans-serif;
-  color: #212121e0;
-  font-size: 22px;
+  color: #262626;
+  font-size: 26px;
   font-weight: 400;
   letter-spacing: 0em;
   line-height: 1.3em;
@@ -134,15 +303,19 @@ body {
 .MuiCard-root ::placeholder,
 .MuiCard-root #react-select-2-placeholder {
   font-family: "futura-pt", sans-serif;
-  color: #908e8e;
+  color: #262626;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0em;
   line-height: 1.3em;
 }
+#school_select div,
+#school_select input {
+  color: #262626;
+}
 .MuiCard-root #react-select-2-listbox {
   font-family: "futura-pt", sans-serif;
-  color: #908e8e;
+  color: #262626;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0em;
@@ -150,8 +323,8 @@ body {
 }
 .MuiCard-root .MuiTypography-caption {
   font-family: "futura-pt", sans-serif;
-  color: #7d7d7d;
-  font-size: 15px;
+  color: #262626;
+  font-size: 18px;
   font-weight: 400;
   letter-spacing: 0em;
   line-height: 1.2em;
@@ -159,13 +332,13 @@ body {
 .MuiCard-root .MuiButtonBase-root,
 .MuiCard-root .MuiButtonBase-root:not(:hover),
 .MuiCard-root .MuiButtonBase-root:focus:not(:hover) {
-  font-family: "futura-pt", sans-serif;
+  font-family: "proxima-nova-condensed", sans-serif;
   background-color: #545454;
   color: #ffffff;
   text-transform: uppercase;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0em;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   line-height: 1.2em;
   border-radius: 3px;
   opacity: 1;
@@ -175,11 +348,14 @@ body {
   background-color: #545454;
   color: #ffffff;
 }
+/* #submit.MuiButtonBase-root {
+  background-color: #fd3b26;
+} */
 div.address {
-  color: #67748e;
+  color: #262626;
 }
 .MuiRadio-root .MuiFormControlLabel-label {
-  color: #212121e0;
+  color: #262626;
 }
 .MuiAlert-message a {
   text-decoration: underline !important;

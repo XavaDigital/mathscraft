@@ -13,6 +13,7 @@ module.exports.submissionAdded = (values) => {
         from: `"${fromName}" <${sender}>`,
         to: values.email, // list of receivers
         subject: "Thank you for ordering Maths Craft in a Box!", // Subject line
+        replyTo: sender,
         // eslint-disable-next-line max-len
         html:
           `<p>Hi ${values.firstName},</p><p>Thank you for ordering Maths Craft in a Box!</p>` +
@@ -24,6 +25,8 @@ module.exports.submissionAdded = (values) => {
           `<li>Phone: ${values.phone}</li>` +
           `<li>Email: ${values.email}</li>` +
           `<li>Address: ${values.schoolName}, ${values.address1}, ${values.address2}, ${values.townCity}, ${values.postcode}</li>` +
+          `<li>Address Correct: ${values.addressCorrect}</li>` +
+          (values.comments ? `<li>Comments: ${values.comments}</li>` : "") +
           "</ul>", // html body
       })
       .then(() => {
@@ -66,6 +69,7 @@ module.exports.sendEnquiryMessage = (values) => {
         to: ADMIN_EMAIL, // list of receivers
         subject: values.subject, // Subject line
         // eslint-disable-next-line max-len
+        replyTo: values.email,
         html:
           `An enquiry was received from ${values.name} via the registration form` +
           "<ul>" +

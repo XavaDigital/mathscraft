@@ -175,13 +175,13 @@ const RegistrationPage = () => {
               style={{ maxWidth: "100%", padding: "0 10px" }}
             /> */}
             <CardHeader
-              title={"Register Now"}
+              title={"Order Now"}
               titleTypographyProps={{ variant: "h2", fontWeight: "800" }}
             />
             <CardContent>
               <ArgonTypography variant="body">
-                Please register for a Box below. If you have any questions or problems completing
-                the form, please <a onClick={redirectContact}>contact us</a>.
+                Please complete the form below to order your Box. If you have any questions or
+                problems completing the form, please <a onClick={redirectContact}>contact us</a>.
               </ArgonTypography>
               <FormSectionTitle variant="h4">Your Details</FormSectionTitle>
               <Grid container spacing={1}>
@@ -251,6 +251,7 @@ const RegistrationPage = () => {
                   options={schools}
                   name="school"
                   type="select"
+                  id="school_select"
                   value={formik.values.school}
                   onChange={onSchoolChange}
                   error={formik.touched.school && Boolean(formik.errors.school)}
@@ -299,72 +300,6 @@ const RegistrationPage = () => {
                         Please <a onClick={redirectContact}>contact us</a> if the postal address
                         listed is incorrect or leave a comment in the box below.
                       </Alert>
-                      {/* <FormSectionTitle variant="h4">Delivery Details</FormSectionTitle>
-                      <Grid container spacing={1}>
-                        {schoolSelected.value === "0" && (
-                          <Grid item xs={12} lg={12}>
-                            <ArgonInput
-                              type="text"
-                              name="schoolName"
-                              label="School Name"
-                              placeholder="School Name"
-                              value={formik.values.schoolName}
-                              onChange={formik.handleChange}
-                              error={formik.touched.schoolName && Boolean(formik.errors.schoolName)}
-                              helperText={formik.touched.schoolName && formik.errors.schoolName}
-                            />
-                          </Grid>
-                        )}
-                        <Grid item xs={12} lg={6}>
-                          <ArgonInput
-                            type="text"
-                            name="address1"
-                            label="Address line 1"
-                            placeholder="Address Line 1"
-                            value={formik.values.address1}
-                            onChange={formik.handleChange}
-                            error={formik.touched.address1 && Boolean(formik.errors.address1)}
-                            helperText={formik.touched.address1 && formik.errors.address1}
-                          />
-                        </Grid>
-                        <Grid item xs={12} lg={6}>
-                          <ArgonInput
-                            type="text"
-                            name="address2"
-                            label="Address line 2"
-                            placeholder="Address Line 2"
-                            value={formik.values.address2}
-                            onChange={formik.handleChange}
-                            error={formik.touched.address2 && Boolean(formik.errors.address2)}
-                            helperText={formik.touched.address2 && formik.errors.address2}
-                          />
-                        </Grid>
-
-                        <Grid item xs={12} lg={6}>
-                          <ArgonInput
-                            type="text"
-                            name="townCity"
-                            label="Town/City"
-                            placeholder="Town/City"
-                            value={formik.values.townCity}
-                            onChange={formik.handleChange}
-                            error={formik.touched.townCity && Boolean(formik.errors.townCity)}
-                            helperText={formik.touched.townCity && formik.errors.townCity}
-                          />
-                        </Grid>
-                        <Grid item xs={12} lg={6}>
-                          <ArgonInput
-                            type="text"
-                            name="postcode"
-                            label="Postcode"
-                            placeholder="Postcode"
-                            value={formik.values.postcode}
-                            onChange={formik.handleChange}
-                            error={formik.touched.postcode && Boolean(formik.errors.postcode)}
-                            helperText={formik.touched.postcode && formik.errors.postcode}
-                          />
-                        </Grid>
-                      </Grid> */}
                     </>
                   )}
 
@@ -390,11 +325,19 @@ const RegistrationPage = () => {
                     </ArgonBox>
                   )}
                   {!inProgress ? (
-                    <ArgonBox mt={4}>
-                      <ArgonButton type="submit" fullWidth>
-                        Submit
-                      </ArgonButton>
-                    </ArgonBox>
+                    <>
+                      <ArgonBox mt={4} mb={4}>
+                        <ArgonButton id="submit" type="submit" fullWidth>
+                          Submit
+                        </ArgonButton>
+                      </ArgonBox>
+                      <ArgonBox>
+                        <ArgonTypography variant="body">
+                          If you have any questions or problems completing the form, please{" "}
+                          <a onClick={redirectContact}>contact us</a>.
+                        </ArgonTypography>
+                      </ArgonBox>
+                    </>
                   ) : (
                     <>
                       <ArgonBox mt={4} textAlign="center">
@@ -406,11 +349,6 @@ const RegistrationPage = () => {
                     </>
                   )}
                 </>
-              )}
-              {!inProgress && (
-                <ArgonBox mt={3} mb={3} textAlign="center">
-                  <ArgonButton onClick={redirectContact}>Contact Us</ArgonButton>
-                </ArgonBox>
               )}
             </CardContent>
           </Card>

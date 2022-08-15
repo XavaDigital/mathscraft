@@ -1,7 +1,11 @@
 const Submission = require("../models/submission");
+const moment = require("moment");
 const { Parser } = require("json2csv");
+const https = require("follow-redirects").https;
+const fs = require("fs");
 
 const emailService = require("./emailService");
+const METAAPI_KEY = process.env.METAAPI_KEY;
 
 module.exports.getAll = (req, res) => {
   Submission.find({})
@@ -26,6 +30,8 @@ module.exports.getAll = (req, res) => {
 };
 
 module.exports.add = (values, res) => {
+  values.date = moment().local().format("YYYY-MM-DD kk:mm:ss");
+  addToSheet(values);
   Submission.create(values)
     .then((submission) => {
       emailService
@@ -53,10 +59,7 @@ module.exports.download = (res) => {
     "email",
     "phone",
     "schoolName",
-    "address1",
-    "address2",
-    "townCity",
-    "postcode",
+    "addressCorrect",
     "comments",
   ];
   const opts = { fields };
@@ -106,4 +109,37 @@ module.exports.message = (values, res) => {
     .catch((err) => {
       res.json({ success: false, msg: err.message });
     });
+};
+
+const addToSheet = (values) => {
+  const options = {
+    method: "POST",
+    hostname: "api.meta-api.io",
+    path: "/api/spells/62f06efddff527d5a5a20d39/runSync",
+    headers: {
+      apikey: METAAPI_KEY,
+      "Content-Type": "application/json",
+    },
+    maxRedirects: 20,
+  };
+
+  const req = https.request(options, function (res) {
+    const chunks = [];
+
+    res.on("data", function (chunk) {
+      chunks.push(chunk);
+    });
+
+    res.on("end", function (chunk) {
+      // const body = Buffer.concat(chunks);
+    });
+
+    res.on("error", function (error) {
+      console.error(error);
+    });
+  });
+
+  req.write(JSON.stringify(values));
+
+  req.end();
 };
