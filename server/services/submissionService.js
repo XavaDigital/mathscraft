@@ -60,7 +60,12 @@ module.exports.download = (res) => {
     "phone",
     "schoolName",
     "addressCorrect",
+    "address1",
+    "address2",
+    "townCity",
+    "postcode",
     "comments",
+    "date",
   ];
   const opts = { fields };
 
@@ -71,22 +76,28 @@ module.exports.download = (res) => {
           success: false,
           msg: "No submissions found",
         });
-      }
-      try {
-        const parser = new Parser(opts);
-        const csv = parser.parse(subs);
-        return emailService
-          .downloadSubmissions(csv)
-          .then(() => {
-            return res.json({
-              success: true,
+      } else {
+        subs.forEach((sub) => {
+          sub.date = moment(sub.date_created)
+            .local()
+            .format("YYYY-MM-DD kk:mm:ss");
+        });
+        try {
+          const parser = new Parser(opts);
+          const csv = parser.parse(subs);
+          return emailService
+            .downloadSubmissions(csv)
+            .then(() => {
+              return res.json({
+                success: true,
+              });
+            })
+            .catch((err) => {
+              res.json({ success: false, msg: err.message });
             });
-          })
-          .catch((err) => {
-            res.json({ success: false, msg: err.message });
-          });
-      } catch (err) {
-        console.log(err);
+        } catch (err) {
+          console.log(err);
+        }
       }
     })
     .catch((err) => {
