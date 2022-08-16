@@ -58,6 +58,8 @@ if (process.env.NODE_ENV === "PROD") {
 }
 
 // Initialize routes middleware
+app.use("/", require("./routes/default"));
+app.use("/api/", require("./routes/default"));
 app.use("/api/submissions", require("./routes/submissions"));
 
 const PORT = process.env.PORT || 3000;
