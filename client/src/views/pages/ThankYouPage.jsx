@@ -9,7 +9,7 @@ const ThankYouPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("scrolling");
+    //console.log("scrolling");
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     };

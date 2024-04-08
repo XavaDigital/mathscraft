@@ -31,7 +31,7 @@ module.exports.getAll = (req, res) => {
 
 module.exports.add = (values, res) => {
   values.date = moment().local().format("YYYY-MM-DD kk:mm:ss");
-  addToSheet(values);
+  // addToSheet(values);
   Submission.create(values)
     .then((submission) => {
       emailService
