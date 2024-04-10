@@ -5,7 +5,7 @@ const instance = axios.create({
   baseURL: config.WS_BASE_URL,
 });
 
-const sheets = axios.create({});
+// const sheets = axios.create({});
 
 instance.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token");
@@ -53,6 +53,7 @@ export const downloadSubmissions = () => {
   return instance
     .get(`submissions/download`)
     .then((res) => {
+      console.log(res);
       return res;
     })
     .catch((err) => {

@@ -5,9 +5,11 @@
 // };
 
 const config = {
-  WS_BASE_URL: "https://boxapi.mathscraftnz.org/api/",
-  DOMAIN_NAME: "https://box.mathscraftnz.org",
-  DEMO: false,
+  WS_BASE_URL: "https://d2zqej48fhvsl3.cloudfront.net/api/",
+  //WS_BASE_URL: "https://boxapi.mathscraftnz.org/api/",
+  // DEMO: false,
 };
+
+console.log(config);
 
 export default config;
