@@ -18,7 +18,6 @@ export const indexSubmissions = () => {
   return instance
     .get("submissions/")
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((err) => {
@@ -41,7 +40,6 @@ export const addSubmission = (values) => {
   return instance
     .post(`submissions/`, { values })
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((err) => {
@@ -53,7 +51,6 @@ export const downloadSubmissions = () => {
   return instance
     .get(`submissions/download`)
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((err) => {
