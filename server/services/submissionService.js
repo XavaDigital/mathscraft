@@ -1,11 +1,11 @@
 const Submission = require("../models/submission");
 const moment = require("moment");
 const { Parser } = require("json2csv");
-// const https = require("follow-redirects").https;
+const https = require("follow-redirects").https;
 // const fs = require("fs");
 
 const emailService = require("./emailService");
-// const METAAPI_KEY = process.env.METAAPI_KEY;
+// const MAKE_URL = process.env.MAKE_URL;
 
 module.exports.getAll = (req, res) => {
   Submission.find({})
@@ -31,7 +31,7 @@ module.exports.getAll = (req, res) => {
 
 module.exports.add = (values, res) => {
   values.date = moment().local().format("YYYY-MM-DD kk:mm:ss");
-  // addToSheet(values);
+  addToSheet(values);
   Submission.create(values)
     .then((submission) => {
       emailService
@@ -122,35 +122,37 @@ module.exports.message = (values, res) => {
     });
 };
 
-// const addToSheet = (values) => {
-//   const options = {
-//     method: "POST",
-//     hostname: "api.meta-api.io",
-//     path: "/api/spells/62f06efddff527d5a5a20d39/runSync",
-//     headers: {
-//       apikey: METAAPI_KEY,
-//       "Content-Type": "application/json",
-//     },
-//     maxRedirects: 20,
-//   };
+const addToSheet = (values) => {
+  const options = {
+    method: "POST",
+    hostname: "hook.us1.make.com",
+    path: "/v1wnlpndqekkzskp2uw7nmrjikp4k7kd",
+    headers: {
+      Cookie:
+        "__cf_bm=t9R.ZDRixuAwtPwwL.Fhq1qvCY0xrwvmdggOJc25BCg-1714486124-1.0.1.1-Vx9D1Arnec4lo5RZQ6IHp6T00XQRpJpkRXl7.8QLXeYSUNNnAUwTYC3Be8vRuhkj7HOykqI9ixFoe3b2ABcm6A",
+      "Content-Type": "application/json",
+    },
+    maxRedirects: 20,
+  };
 
-//   const req = https.request(options, function (res) {
-//     const chunks = [];
+  const req = https.request(options, function (res) {
+    const chunks = [];
 
-//     res.on("data", function (chunk) {
-//       chunks.push(chunk);
-//     });
+    res.on("data", function (chunk) {
+      chunks.push(chunk);
+    });
 
-//     res.on("end", function (chunk) {
-//       // const body = Buffer.concat(chunks);
-//     });
+    res.on("end", function (chunk) {
+      const body = Buffer.concat(chunks);
+      console.log(body.toString());
+    });
 
-//     res.on("error", function (error) {
-//       console.error(error);
-//     });
-//   });
+    res.on("error", function (error) {
+      console.error(error);
+    });
+  });
 
-//   req.write(JSON.stringify(values));
+  req.write(JSON.stringify(values));
 
-//   req.end();
-// };
+  req.end();
+};

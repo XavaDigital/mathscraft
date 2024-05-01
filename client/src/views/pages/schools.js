@@ -5,7 +5,7 @@ export const schools = [
     address1: "10 Kotiri Street",
     address2: "",
     townCity: "Auckland",
-    postcode: "",
+    postcode: 1071,
   },
   {
     value: 3700,

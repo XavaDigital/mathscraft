@@ -29,6 +29,7 @@ const RegistrationPage = () => {
     lastName: "",
     email: "",
     phone: "",
+    discover: "",
     school: "",
     schoolName: "",
     addressCorrect: "true",
@@ -42,6 +43,20 @@ const RegistrationPage = () => {
   const [error, setError] = useState("");
   const [inProgress, setInProgress] = useState(false);
   const [schoolSelected, setSchoolSelected] = useState(false);
+
+  const discoverOptions = [
+    { value: "Maths Craft Email", label: "Maths Craft Email" },
+    { value: "Event", label: "Event" },
+    { value: "X", label: "X" },
+    { value: "Instagram", label: "Instagram" },
+    { value: "Colleague", label: "Colleague" },
+    { value: "Had a box before", label: "Had a box before" },
+    { value: "Other", label: "Other" },
+  ];
+
+  const schoolOptions = schools.map((school) => {
+    return { ...school, value: school.value.toString() };
+  });
 
   const navigate = useNavigate();
 
@@ -59,6 +74,7 @@ const RegistrationPage = () => {
     phone: Yup.string()
       .required("Please enter a phone number")
       .matches(phoneRegExp, "Phone number is not valid. It must contain only numbers and spaces"),
+    discover: Yup.string().required("Please indicate how you found out about the Box"),
     school: Yup.string("Please indicate your school").required(
       "Please indicate the school you are affiliated with"
     ),
@@ -71,7 +87,7 @@ const RegistrationPage = () => {
     address1: Yup.string("Please enter your address").required("Please enter your address"),
     address2: Yup.string("Please enter the correct address"),
     townCity: Yup.string("Town/city is required").required("Town/city is required"),
-    postcode: Yup.string("Enter a postcode").required("Please enter your postcode"),
+    postcode: Yup.string("Enter a postcode"),
     comments: Yup.string("Add any other comments"),
   });
 
@@ -83,11 +99,13 @@ const RegistrationPage = () => {
     },
   });
 
+  // const handleError
+
   const handleSubmit = (values, actions) => {
+    // console.log(values);
     setError("");
     setInProgress(true);
     // console.log(values);
-
     addSubmission(values)
       .then((res) => {
         let { data } = res;
@@ -122,13 +140,16 @@ const RegistrationPage = () => {
   };
 
   // useEffect(() => {
+  //   console.log(Object.values(formik.errors).length);
+  //   console.log(Object.values(formik.values));
   //   if (Object.values(formik.errors).length > 0) {
-  //     setError("Some fields are invalid. Please check and try again");
+  //     let string = Object.values(formik.errors).join(", ");
+  //     setError(string);
   //   } else setError("");
   // }, [formik.errors]);
 
   const onSchoolChange = (val) => {
-    const school = schools.find((school) => school.value === val);
+    const school = schoolOptions.find((school) => school.value === val);
     if (school && school.value !== "0") {
       formik.setFieldValue("schoolName", school.label);
       formik.setFieldValue("address1", school.address1);
@@ -147,6 +168,10 @@ const RegistrationPage = () => {
       setSchoolSelected(school);
     }
     formik.setFieldValue("school", val);
+  };
+
+  const onDiscoverChange = (val) => {
+    formik.setFieldValue("discover", val);
   };
 
   // useEffect(() => {
@@ -234,6 +259,27 @@ const RegistrationPage = () => {
                     helperText={formik.touched.email && formik.errors.email}
                   />
                 </Grid>
+                <Grid item>
+                  <ArgonSelect
+                    label="How did you find out about the Box?"
+                    // description={
+                    //   <div>
+                    //     Please start typing your school&apos;s name and select your school from the
+                    //     dropdown list. Please <a onClick={redirectContact}>contact us</a> if you
+                    //     can&apos;t find your school or if the postal address listed is incorrect.
+                    //   </div>
+                    // }
+                    placeholder="How did you find out about the Box?"
+                    options={discoverOptions}
+                    name="discover"
+                    type="select"
+                    id="discover_select"
+                    value={formik.values.discover}
+                    onChange={onDiscoverChange}
+                    error={formik.touched.discover && Boolean(formik.errors.discover)}
+                    helperText={formik.touched.discover && formik.errors.discover}
+                  />
+                </Grid>
               </Grid>
               <FormSectionTitle variant="h4">Your School</FormSectionTitle>
 
@@ -248,7 +294,7 @@ const RegistrationPage = () => {
                     </div>
                   }
                   placeholder="School Name"
-                  options={schools}
+                  options={schoolOptions}
                   name="school"
                   type="select"
                   id="school_select"
