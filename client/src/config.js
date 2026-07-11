@@ -5,8 +5,8 @@ const dev = {
 };
 
 const prod = {
-  //WS_BASE_URL: "https://d2zqej48fhvsl3.cloudfront.net/api/",
-  WS_BASE_URL: "https://boxapi.mathscraftnz.org/api/",
+  // Same-origin: Firebase Hosting rewrites /api/** to the Cloud Run service
+  WS_BASE_URL: "/api/",
   // DEMO: false,
 };
 

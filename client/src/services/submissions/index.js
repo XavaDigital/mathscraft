@@ -14,28 +14,6 @@ instance.interceptors.request.use(async (config) => {
   return config;
 });
 
-export const indexSubmissions = () => {
-  return instance
-    .get("submissions/")
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-export const getSubmission = (id) => {
-  return instance
-    .get(`submissions/${id}`)
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
 export const addSubmission = (values) => {
   return instance
     .post(`submissions/`, { values })

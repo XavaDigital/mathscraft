@@ -1,37 +1,15 @@
 const Submission = require("../models/submission");
 const moment = require("moment");
 const { Parser } = require("json2csv");
-const https = require("follow-redirects").https;
-// const fs = require("fs");
 
 const emailService = require("./emailService");
-// const MAKE_URL = process.env.MAKE_URL;
-
-module.exports.getAll = (req, res) => {
-  Submission.find({})
-    .then((subs) => {
-      if (subs.length == 0) {
-        res.json({
-          success: false,
-          msg: "No submissions found",
-        });
-      }
-      res.json({
-        success: true,
-        subs,
-      });
-    })
-    .catch((err) => {
-      res.json({
-        success: false,
-        msg: err.message,
-      });
-    });
-};
+const sheetsService = require("./sheetsService");
 
 module.exports.add = (values, res) => {
   values.date = moment().local().format("YYYY-MM-DD kk:mm:ss");
-  addToSheet(values);
+  sheetsService.appendSubmission(values).catch((err) => {
+    console.error("Failed to append submission to Google Sheet:", err.message);
+  });
   Submission.create(values)
     .then((submission) => {
       emailService
@@ -58,6 +36,7 @@ module.exports.download = (res) => {
     "lastName",
     "email",
     "phone",
+    "discover",
     "schoolName",
     "addressCorrect",
     "address1",
@@ -120,39 +99,4 @@ module.exports.message = (values, res) => {
     .catch((err) => {
       res.json({ success: false, msg: err.message });
     });
-};
-
-const addToSheet = (values) => {
-  const options = {
-    method: "POST",
-    hostname: "hook.us1.make.com",
-    path: "/v1wnlpndqekkzskp2uw7nmrjikp4k7kd",
-    headers: {
-      Cookie:
-        "__cf_bm=t9R.ZDRixuAwtPwwL.Fhq1qvCY0xrwvmdggOJc25BCg-1714486124-1.0.1.1-Vx9D1Arnec4lo5RZQ6IHp6T00XQRpJpkRXl7.8QLXeYSUNNnAUwTYC3Be8vRuhkj7HOykqI9ixFoe3b2ABcm6A",
-      "Content-Type": "application/json",
-    },
-    maxRedirects: 20,
-  };
-
-  const req = https.request(options, function (res) {
-    const chunks = [];
-
-    res.on("data", function (chunk) {
-      chunks.push(chunk);
-    });
-
-    res.on("end", function (chunk) {
-      const body = Buffer.concat(chunks);
-      console.log(body.toString());
-    });
-
-    res.on("error", function (error) {
-      console.error(error);
-    });
-  });
-
-  req.write(JSON.stringify(values));
-
-  req.end();
 };

@@ -16,6 +16,9 @@ const SubmissionSchema = new mongoose.Schema({
   phone: {
     type: String,
   },
+  discover: {
+    type: String,
+  },
   school: {
     type: String,
   },

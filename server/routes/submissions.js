@@ -4,10 +4,6 @@ const router = express.Router();
 
 const submissionService = require("../services/submissionService");
 
-router.get("/all", function (req, res) {
-  return submissionService.getAll(req, res);
-});
-
 router.get("/download", function (req, res) {
   return submissionService.download(res);
 });

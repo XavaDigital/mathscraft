@@ -1,0 +1,9 @@
+# Upload filter for `gcloud run deploy --source server`.
+# This file takes precedence over .gitignore, which excludes
+# package-lock.json — the Docker build needs it for `npm ci`.
+.git
+node_modules
+app.zip
+etc
+index.html
+.env

@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "site": "mathscraft-box",
+    "public": "client/build",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "mathscraft-api",
+          "region": "australia-southeast1"
+        }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

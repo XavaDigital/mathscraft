@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+app.zip
+etc
+index.html
+.env
+*.md
