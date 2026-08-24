@@ -53,9 +53,14 @@ cd client
 PATH="/c/Users/cirni/AppData/Roaming/nvm/v16.14.0:$PATH" \
 REACT_APP_WS_BASE_URL="https://mathscraft-api-312662345901.australia-southeast1.run.app/api/" \
 CI=false npm run build
-aws s3 sync build s3://box.mathscraftnz.org
-aws cloudfront create-invalidation --distribution-id E3MNLY5LQZL7EE --paths "/*"
+aws s3 sync build s3://box.mathscraftnz.org --profile mathscraft-deploy
+aws cloudfront create-invalidation --distribution-id E3MNLY5LQZL7EE --paths "/*" --profile mathscraft-deploy
 ```
+
+The `mathscraft-deploy` AWS profile is the IAM user `mathscraft-S3`
+(account 843229760456), limited to this bucket and distribution. Its
+access key also lives in `client/.env` (gitignored; not `REACT_APP_`-
+prefixed, so it can never end up in a build).
 
 **2. GCP copy (Firebase Hosting, `mathscraft-box.web.app`)**:
 
