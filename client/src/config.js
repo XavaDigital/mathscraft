@@ -5,8 +5,10 @@ const dev = {
 };
 
 const prod = {
-  // Same-origin: Firebase Hosting rewrites /api/** to the Cloud Run service
-  WS_BASE_URL: "/api/",
+  // Default is same-origin: Firebase Hosting rewrites /api/** to the Cloud Run
+  // service. The S3/CloudFront copy at box.mathscraftnz.org is built with
+  // REACT_APP_WS_BASE_URL set to the Cloud Run URL (see DEPLOYMENT.md).
+  WS_BASE_URL: process.env.REACT_APP_WS_BASE_URL || "/api/",
   // DEMO: false,
 };
 
