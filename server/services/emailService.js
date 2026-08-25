@@ -17,7 +17,7 @@ module.exports.submissionAdded = (values) => {
         // eslint-disable-next-line max-len
         html:
           `<p>Hi ${values.firstName},</p><p>Thank you for ordering Maths Craft in a Box!</p>` +
-          "<p>You can expect to receive your Box within a few weeks. Once you receive your Box, we would really love to hear from you about your experience using the Box. All feedback, stories, and photos are welcome!</p>" +
+          "<p>You can expect to receive your Box before the end of Term 3 2026. We will begin shipping from early September and will email you when your Box is on the way. Once you receive your Box, we would really love to hear from you about your experience using the Box. All feedback, stories, and photos are welcome!</p>" +
           `<p>If you have any questions, or no longer wish to receive a Box, please reply to this email.</p>` +
           "<p><b>The Maths Craft Team</b></p><br/><br/>" +
           "<span>Order Summary:</span>" +
